@@ -16,9 +16,6 @@ public class HeaderFileDeserializer {
     //TODO: make this not terrible in future when have an opportunity to do it all more cleverly
     //TODO: unless we don't need complexity in the keywords file, in which case we can simply use obvious matchers
 
-    // private static Pattern CLASS_DEFINITION_REGEX = Pattern.compile("class +([^ ])+ ?\\{?\\}?");
-    // private static Pattern PUBLIC_MODIFIER_REGEX = Pattern.compile("public\\:");
-    // private static Pattern PRIVATE_MODIFIER_REGEX = Pattern.compile(" .private\\:");
     private static Pattern METHOD_IDENTIFIER_REGEX = Pattern.compile(" *[^ ]+ +([^ ]+) *\\(\\);");
 
     private enum Scope {GLOBAL, CLASS_PRIVATE, CLASS_PUBLIC}
@@ -42,8 +39,6 @@ public class HeaderFileDeserializer {
         for (String line : lines) {
             var trimmedLine = line.trim();
             if (trimmedLine.startsWith("class ")) {
-                System.out.println("first block!");
-                // breaks up name
                 final var className = Optional.of(trimmedLine.split(" ")[1])
                         .map(clazzName -> clazzName.endsWith("{") ? clazzName.substring(0, clazzName.length() - 1) : clazzName)
                         .get();
@@ -60,11 +55,8 @@ public class HeaderFileDeserializer {
             } else if (trimmedLine.endsWith("}") && (scope == Scope.CLASS_PRIVATE || scope == Scope.CLASS_PUBLIC)) {
                 scope = Scope.GLOBAL;
             } else {
-                System.out.println("try to match!");
-                System.out.println(trimmedLine);
                 final var matcher = METHOD_IDENTIFIER_REGEX.matcher(trimmedLine);
                 if (!matcher.find()) {
-                    System.out.println("didn't find!");
                     continue;
                 }
                 result.add(new KeywordRow(KeyWordType.METHOD, matcher.group(1)));

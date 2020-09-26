@@ -25,8 +25,6 @@ public class HeaderFinder {
     }
 
     private static boolean isHeaderFile(final File file){
-        System.out.println(String.format("is header file? fileName: %s", file.getName()));
-
         return file.getName().endsWith(HEADER_FILE_EXTENSION) && !file.isDirectory();
     }
 }

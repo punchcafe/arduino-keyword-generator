@@ -2,17 +2,13 @@ package dev.punchcafe.arduino.keywordgen;
 
 import org.junit.jupiter.api.Test;
 
-import static dev.punchcafe.arduino.keywordgen.TestConstants.ALL_HEADER_FILE_PATHS;
-import static dev.punchcafe.arduino.keywordgen.TestConstants.ROOT_PACKAGE_PATH;
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static dev.punchcafe.arduino.keywordgen.TestConstants.*;
+import static dev.punchcafe.arduino.keywordgen.TestConstants.ROOT_PACKAGE_HEADER_FILE_PATH;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HeaderFileDeserializerTest {
 
