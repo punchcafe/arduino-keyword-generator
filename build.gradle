@@ -31,9 +31,21 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
 }
 
+ext {
+    javaMainClass = 'dev.punchcafe.arduino.keywordgen.KeywordGenerator'
+}
+
 application {
     // Define the main class for the application.
-    mainClassName = 'dev.punchcafe.arduino.keywordgen.App'
+    mainClassName = javaMainClass
+}
+
+jar {
+    manifest {
+        attributes(
+                "Main-Class": javaMainClass
+        )
+    }
 }
 
 test {
