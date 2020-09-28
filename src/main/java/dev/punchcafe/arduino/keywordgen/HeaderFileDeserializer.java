@@ -16,7 +16,7 @@ public class HeaderFileDeserializer {
     //TODO: make this not terrible in future when have an opportunity to do it all more cleverly
     //TODO: unless we don't need complexity in the keywords file, in which case we can simply use obvious matchers
 
-    private static Pattern METHOD_IDENTIFIER_REGEX = Pattern.compile(" *[^ ]+ +([^ ]+) *\\(\\);");
+    private static Pattern METHOD_IDENTIFIER_REGEX = Pattern.compile(" *[^ ]+ +([^ ]+) *\\(.*\\);");
 
     private enum Scope {GLOBAL, CLASS_PRIVATE, CLASS_PUBLIC}
 

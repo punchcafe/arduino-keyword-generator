@@ -18,7 +18,7 @@ public class HeaderFileDeserializerTest {
                 .stream()
                 .map(Object::toString)
                 .collect(Collectors.toList());
-        final var expected = List.of("Name: SomeClass, Keyword Type: CLASS", "Name: helloWorld, Keyword Type: METHOD");
+        final var expected = List.of("Name: SomeClass, Keyword Type: CLASS", "Name: helloWorld, Keyword Type: METHOD", "Name: add, Keyword Type: METHOD");
         assertEquals(expected, result);
     }
 }
